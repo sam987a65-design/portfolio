@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-midnight: #0b1020;
+    --color-midnight-light: #141b2e;
+    --color-midnight-lighter: #1e2740;
+    --color-azure: #2dd4bf;
+    --color-azure-light: #5eead4;
+    --color-azure-dark: #14b8a6;
+    --color-warm: #ff8a65;
+    --color-warm-light: #ffab91;
+    --color-warm-dark: #ff7043;
+    --color-soft: #e6eef6;
+    --color-soft-dark: #cbd5e1;
+  }
+
+  * {
+    @apply border-soft/10;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-midnight text-soft antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-azure ring-offset-2 ring-offset-midnight;
+  }
+
+  /* Selection styles */
+  ::selection {
+    @apply bg-azure/30 text-soft;
+  }
+
+  /* Scrollbar styles */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-midnight-light;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-azure/30 rounded-full hover:bg-azure/50;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .heading-1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+
+  .heading-2 {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight;
+  }
+
+  .heading-3 {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight;
+  }
+
+  .body-large {
+    @apply text-lg sm:text-xl leading-relaxed;
+  }
+
+  .body-normal {
+    @apply text-base leading-relaxed;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-azure text-midnight font-semibold rounded-lg transition-all duration-300 hover:bg-azure-light hover:shadow-glow-md hover:scale-105 focus:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-midnight-lighter text-soft border border-azure/30 font-semibold rounded-lg transition-all duration-300 hover:bg-midnight-light hover:border-azure hover:shadow-glow-sm hover:scale-105 focus:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .card {
+    @apply bg-midnight-light border border-soft/10 rounded-xl p-6 transition-all duration-300 hover:border-azure/30 hover:shadow-glow-sm;
+  }
+
+  .card-interactive {
+    @apply card cursor-pointer hover:scale-[1.02] hover:bg-midnight-lighter;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-midnight-lighter border border-soft/10 rounded-lg text-soft placeholder:text-soft/50 transition-all duration-200 focus:border-azure focus:bg-midnight-light;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-soft mb-2;
+  }
+
+  .link {
+    @apply text-azure hover:text-azure-light underline-offset-4 hover:underline transition-colors duration-200;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-azure to-warm bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply bg-midnight-light/50 backdrop-blur-md border border-soft/10;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+
+  .no-print {
+    @apply hidden;
+  }
+}
